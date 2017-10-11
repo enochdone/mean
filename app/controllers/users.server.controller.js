@@ -9,13 +9,10 @@ exports.list = function(req,res,next){
   });
 };
 
-
 exports.create= function(req,res,next){
-
  // res.render('index1', {
  //    title: 'Hello World 2'
  //   });
-
   var user = new User(req.body);
   user.save(function(err) {
     if(err) {
@@ -45,10 +42,24 @@ exports.create= function(req,res,next){
 
 exports.update=function(req,res,next){
   User.findByIdAndUpdate(req.user.id,req.body,function(err,user){
+    console.log(req.user);
+    console.log(req.body);
     if (err){
       return next(err);
     }else{
       res.json(user);
     }
   });
+};
+
+exports.delete = function(req,res,next)
+{
+  req.user.remove(function(err){
+    if(err){
+      return next(err);
+    }
+    else{
+      res.json(req.user);
+    }
+  })
 };
