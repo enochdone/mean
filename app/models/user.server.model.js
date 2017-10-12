@@ -13,7 +13,21 @@ var UserSchema = new Schema({
   created: { 
     type: Date,
     default: Date.now
-  }
+  },
+  website: {
+    type: String,
+    get: function(url) {
+      if (!url) {
+        return url;
+      }else {
+        if (url.indexOf('http://')!== 0 &&
+            url.indexOf('https://' + url;
+                        }
+                        return url;
+                        }
+                        }
+                        }
 });
 
+            UserSchema.set('toJSON', {getters: true});
 mongoose.model('User',UserSchema);
